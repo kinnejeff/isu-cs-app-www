@@ -11,7 +11,7 @@ function geoLocationError(error) {
 }
 
 function headingSuccess(heading) {
-    document.getElementById("heading").innerHTML = heading.magneticHeading + " (" + heading.headingAccuracy + " accuracy)";
+    document.getElementById("heading").innerHTML = heading.magneticHeading;
 
 }
 function headingError(error) {

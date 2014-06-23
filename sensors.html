@@ -35,19 +35,19 @@ function updateSensors() {
     document.getElementById("gps_coords").innerHTML = "no geolocation data";
 
   // get heading...
-  if (navigator && navigator.compass && navigator.compass.getCurrentHeading)
+  if (1)//navigator && navigator.compass && navigator.compass.getCurrentHeading)
     navigator.compass.getCurrentHeading(headingSuccess, headingError);
   else
     document.getElementById("heading").innerHTML = "no heading info";
 
   // get device acceleration
-  if (navigator && navigator.accelerometer && navigator.accelerometer.getCurrentAcceleration)
+  if (1)//navigator && navigator.accelerometer && navigator.accelerometer.getCurrentAcceleration)
     navigator.accelerometer.getCurrentAcceleration(accelerometerSuccess, accelerometerError);
   else
     document.getElementById("acceleration").innerHTML = "no accelerometer";
 
   // get device information
-  if (device && device.model && device.platform && device.version)
+  if (1)//device && device.model && device.platform && device.version)
     document.getElementById("device").innerHTML = device.model + ", " + device.platform + " " + device.version;
   else
     document.getElementById("device").innerHTML = "no device info";
