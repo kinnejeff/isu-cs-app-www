@@ -64,20 +64,21 @@ function onBatteryStatus(info) {
 }
 
 function onDeviceReady() {
-  //document.addEventListener("batterystatus", onBatteryStatus, false);
+  document.addEventListener("batterystatus", onBatteryStatus, false);
   updateSensors();
 }
 
 function imageCaptureSuccess(mediaFiles) {
-  if (mediaFiles.length >= 1)
+  if (mediaFiles.length >= 1) {
     document.getElementById("image").src = mediaFiles[mediaFiles.length-1].fullPath;
+    document.getElementById("image").width = screen.width - 50;
+  }
 }
 function imageCaptureError(error) {
-  alert("Error capturing image, code = " + error.code + ", msg = " + error.message;
+  alert("Error capturing image, code = " + error.code + ", msg = " + error.message);
 }
 function imageCapture() {
   navigator.device.capture.captureImage(imageCaptureSuccess, imageCaptureError);
-);
 }
 </script>
 

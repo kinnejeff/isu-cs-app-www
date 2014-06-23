@@ -63,20 +63,37 @@ function onBatteryStatus(info) {
     document.getElementById("battery").innerHTML += ", NOT plugged in";
 }
 
-function onDeviceReady() {
-  document.addEventListener("batterystatus", onBatteryStatus, false);
-  updateSensors();
+
+var images = "none";
+var image_index = 0;
+
+function cycleImages() {
+  if (images != "none") {
+    document.getElementById("image").src = images[image_index].fullPath;
+    image_index = (image_index + 1) % images.length;
+  }
+  
+  setTimeout(cycleImages,200);
 }
 
 function imageCaptureSuccess(mediaFiles) {
-  if (mediaFiles.length >= 1)
+  if (mediaFiles.length >= 1) {
     document.getElementById("image").src = mediaFiles[mediaFiles.length-1].fullPath;
+    document.getElementById("image").width = screen.width - 50;
+    images = mediaFiles;
+  }
 }
 function imageCaptureError(error) {
   alert("Error capturing image, code = " + error.code + ", msg = " + error.message);
 }
 function imageCapture() {
-  navigator.device.capture.captureImage(imageCaptureSuccess, imageCaptureError);
+  navigator.device.capture.captureImage(imageCaptureSuccess, imageCaptureError, {limit:5});
+}
+
+function onDeviceReady() {
+  document.addEventListener("batterystatus", onBatteryStatus, false);
+  updateSensors();
+  cycleImages();
 }
 </script>
 
