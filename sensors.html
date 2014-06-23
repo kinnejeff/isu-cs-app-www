@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Sensor</title>
+<script>
+
+function geoLocationSuccess(position) {
+    document.getElementById("gps_coords").innerHTML = "Lat " + position.coords.latitute + ", Long " + position.coords.longitude;
+}
+function geolocationError(error) {
+    document.getElementById("gps_coords").innerHTML = "GPS error " + error.code + " " + error.message;
+}
+
+function headingSuccess(heading) {
+    document.getElementById("heading").innerHTML = heading.magneticHeading + " (" + heading.headingAccuracy + " accuracy)";
+
+}
+function headingError(error) {
+    document.getElementById("heading").innerHTML = "Heading error " + error.code + " " + error.message;
+}
+
+function accelerometerSuccess(accel) {
+    document.getElementById("acceleration").innerHTML = "X = " + accel.x + "m/s^2, Y = " + accel.y + ", Z = " + accel.z;
+
+}
+function accelerometerError(error) {
+    document.getElementById("acceleration").innerHTML = "Accelerometer error " + error.code + " " + error.message;
+}
+
+
+function updateSensors() {
+  // get GPS coordinates...
+  navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError);
+
+  // get heading...
+  navigator.compass.getCurrentHeading(headingSuccess, headingError);
+
+  // get device acceleration
+  navigator.accelerometer.getCurrentAcceleration(accelerometerSuccess, accelerometerError);
+
+  // get device information
+  document.getElementById("device").innerHTML = device.model + ", " + device.platform + " " + device.version;
+
+  setTimeout(updateSensors,1000);
+}
+</script>
+
+</head>
+<body onload="updateSensors();">
+<h1>Sensor values...</h1>
+
+<p><b>GPS Coords: </b> <span id="gps_coords"></span></p>
+<p><b>Heading: </b> <span id="heading"></span></p>
+<p><b>Acceleration: </b> <span id="acceleration"></span></p>
+<p><b>Device: </b> <span id="device"></span></p>
+<p><b>: </b> <span id=""></span></p>
+<p><b>: </b> <span id=""></span></p>
+<p><b>: </b> <span id=""></span></p>
+<p><b>: </b> <span id=""></span></p>
+<p><b>: </b> <span id=""></span></p>
+<p><b>: </b> <span id=""></span></p>
+<p><b>: </b> <span id=""></span></p>
+<p><b>: </b> <span id=""></span></p>
+
+</body>
+</html>

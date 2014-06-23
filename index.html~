@@ -31,7 +31,8 @@
       <p><b>Forecast: </b> <span id="forecast"></span></p>
       <p><b>Distance to Root Hall: </b> <span id="distance"></span></p>
 
-      <p><input type="button" onclick="window.location.href='queens.html'">8 Queens</input></p>
+      <p><button onclick="window.location.href='queens.html'">8 Queens</button></p>
+      <p><button onclick="window.location.href='canvas.html'">Canvas</button></p>
 
       
       <script type="text/javascript" src="phonegap.js"></script>

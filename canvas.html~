@@ -7,8 +7,32 @@
 
 <body>
 
+<script>
+  function clickFunction(event) {
+    var canvas = document.getElementById("draw_canvas");
+    var context = canvas.getContext("2d");
+    event = event || window.event;
+    var x = event.pageX - canvas.offsetLeft;
+    var y = event.pageY - canvas.offsetTop;
+    
+    context.beginPath();
+    context.arc(x,y,20,0,2*Math.PI);
+    context.strokeStyle = "black";
+    context.fillStyle = "red";
+    context.stroke();
+    context.fill();
+  }
+</script>
 
-<canvas id="draw_canvas" width="
+<center>
+  <canvas id="draw_canvas" width="200" height="200" style="border:1px solid #000000;" onclick="clickFunction();"></canvas>
+</center>
+
+<script>
+  var canvas = document.getElementById("draw_canvas");
+  canvas.width = screen.width-50;;
+  canvas.height = screen.height-150;
+</script>
 
 </body>
 
