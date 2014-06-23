@@ -29,7 +29,7 @@ function accelerometerError(error) {
 
 function updateSensors() {
   // get GPS coordinates...
-  if (navigator && navigator.geolocation && navigator.getCurrentPosition)
+  if (navigator && navigator.geolocation && navigator.geolocation.getCurrentPosition)
     navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError);
   else
     document.getElementById("gps_coords").innerHTML = "no geolocation data";
