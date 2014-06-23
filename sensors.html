@@ -64,7 +64,7 @@ function onBatteryStatus(info) {
 }
 
 function onDeviceReady() {
-  //document.addEventListener("batterystatus", onBatteryStatus, false);
+  document.addEventListener("batterystatus", onBatteryStatus, false);
   updateSensors();
 }
 
@@ -73,11 +73,10 @@ function imageCaptureSuccess(mediaFiles) {
     document.getElementById("image").src = mediaFiles[mediaFiles.length-1].fullPath;
 }
 function imageCaptureError(error) {
-  alert("Error capturing image, code = " + error.code + ", msg = " + error.message;
+  alert("Error capturing image, code = " + error.code + ", msg = " + error.message);
 }
 function imageCapture() {
   navigator.device.capture.captureImage(imageCaptureSuccess, imageCaptureError);
-);
 }
 </script>
 
