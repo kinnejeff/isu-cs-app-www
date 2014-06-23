@@ -61,7 +61,7 @@ function onDeviceReady() {
 </script>
 
 </head>
-<body>
+<body onload="updateSensors();">
 <h1>Sensor values...</h1>
 
 <p><b>GPS Coords: </b> <span id="gps_coords"></span></p>
@@ -77,10 +77,12 @@ function onDeviceReady() {
 <p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
 
+<!--
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript">
   document.addEventListener('deviceready', onDeviceReady, false);
 </script>
+-->
 
 </body>
 </html>
