@@ -55,8 +55,29 @@ function updateSensors() {
   setTimeout(updateSensors,1000);
 }
 
+function onBatteryStatus(info) {
+  document.getElementById("battery").innerHTML = "level = " + info.level;
+  if (info.isPlugged) 
+    document.getElementById("battery").innerHTML += ", plugged in";
+  else
+    document.getElementById("battery").innerHTML += ", NOT plugged in";
+}
+
 function onDeviceReady() {
+  window.addEventListener("batterystatus", onBatteryStatus, false);
   updateSensors();
+}
+
+function imageCaptureSuccess(mediaFiles) {
+  if (mediaFiles.length >= 1)
+    document.getElementById("image").src = mediaFiles[mediaFiles.length-1].fullPath;
+}
+function imageCaptureError(error) {
+  alert("Error capturing image, code = " + error.code + ", msg = " + error.message;
+}
+function imageCapture() {
+  navigator.device.capture.captureImage(imageCaptureSuccess, imageCaptureError);
+);
 }
 </script>
 
@@ -68,10 +89,10 @@ function onDeviceReady() {
 <p><b>Heading: </b> <span id="heading"></span></p>
 <p><b>Acceleration: </b> <span id="acceleration"></span></p>
 <p><b>Device: </b> <span id="device"></span></p>
-<p><b>: </b> <span id=""></span></p>
-<p><b>: </b> <span id=""></span></p>
-<p><b>: </b> <span id=""></span></p>
-<p><b>: </b> <span id=""></span></p>
+<p><b>Battery: </b> <span id="battery"></span></p>
+<p><button onclick="navigator.notification.vibrate(100)">Vibrate</button></p>
+<p><button onclick="imageCapture();">Take picture </button></p>
+<p><b>Image: </b> <img id="image" src=""></p>
 <p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
