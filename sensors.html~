@@ -6,7 +6,7 @@
 function geoLocationSuccess(position) {
     document.getElementById("gps_coords").innerHTML = "Lat " + position.coords.latitute + ", Long " + position.coords.longitude;
 }
-function geolocationError(error) {
+function geoLocationError(error) {
     document.getElementById("gps_coords").innerHTML = "GPS error " + error.code + " " + error.message;
 }
 
