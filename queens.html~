@@ -92,9 +92,6 @@ Click to place/remove queens.</b>
 <script type="text/javascript">
 
 var dim = 8;
-var smaller_dimension;
-if (screen.width < screen.height) smaller_dimension = screen.width; 
-else smaller_dimension = screen.height;
 for(var row=0; row < dim; row++) {
   document.write("<tr>");
   for(var col=0; col < dim; col++) {
@@ -102,8 +99,6 @@ for(var row=0; row < dim; row++) {
     if ( (row+col) %2 == 0)color = "black";
     else color = "white";
       document.write("<td class=chess_td><button class='square_"+color+"' ");
-      var s = smaller_dimension/8+"px";
-      document.write("style='width:"+s+"; height:"+s+"' ");
       document.write(" id='button_"+row+"_"+col+"' ");
       document.write("ondblclick='toggleQueen(this);' ");
       document.write("onclick='toggleQueen(this);'></button></td>");
