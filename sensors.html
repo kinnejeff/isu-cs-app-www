@@ -35,19 +35,19 @@ function updateSensors() {
     document.getElementById("gps_coords").innerHTML = "no geolocation data";
 
   // get heading...
-  if (1)//navigator && navigator.compass && navigator.compass.getCurrentHeading)
+  if (navigator && navigator.compass && navigator.compass.getCurrentHeading)
     navigator.compass.getCurrentHeading(headingSuccess, headingError);
   else
     document.getElementById("heading").innerHTML = "no heading info";
 
   // get device acceleration
-  if (1)//navigator && navigator.accelerometer && navigator.accelerometer.getCurrentAcceleration)
+  if (navigator && navigator.accelerometer && navigator.accelerometer.getCurrentAcceleration)
     navigator.accelerometer.getCurrentAcceleration(accelerometerSuccess, accelerometerError);
   else
     document.getElementById("acceleration").innerHTML = "no accelerometer";
 
   // get device information
-  if (1)//device && device.model && device.platform && device.version)
+  if (device && device.model && device.platform && device.version)
     document.getElementById("device").innerHTML = device.model + ", " + device.platform + " " + device.version;
   else
     document.getElementById("device").innerHTML = "no device info";
@@ -61,7 +61,7 @@ function onDeviceReady() {
 </script>
 
 </head>
-<body onload="updateSensors();">
+<body>
 <h1>Sensor values...</h1>
 
 <p><b>GPS Coords: </b> <span id="gps_coords"></span></p>
@@ -77,12 +77,10 @@ function onDeviceReady() {
 <p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
 
-<!--
 <script type="text/javascript" src="phonegap.js"></script>
 <script type="text/javascript">
   document.addEventListener('deviceready', onDeviceReady, false);
 </script>
--->
 
 </body>
 </html>
