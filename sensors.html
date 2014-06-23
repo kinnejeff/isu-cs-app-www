@@ -42,10 +42,14 @@ function updateSensors() {
 
   setTimeout(updateSensors,1000);
 }
+
+function onDeviceReady() {
+  updateSensors();
+}
 </script>
 
 </head>
-<body onload="updateSensors();">
+<body>
 <h1>Sensor values...</h1>
 
 <p><b>GPS Coords: </b> <span id="gps_coords"></span></p>
@@ -60,6 +64,11 @@ function updateSensors() {
 <p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
+
+<script type="text/javascript" src="phonegap.js"></script>
+<script type="text/javascript">
+  document.addEventListener('deviceready', onDeviceReady, false);
+</script>
 
 </body>
 </html>
