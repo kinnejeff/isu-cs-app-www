@@ -29,16 +29,25 @@ function accelerometerError(error) {
 
 function updateSensors() {
   // get GPS coordinates...
-  navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError);
+  if (navigator && navigator.geolocation && navigator.getCurrentPosition)
+    navigator.geolocation.getCurrentPosition(geoLocationSuccess, geoLocationError);
+  else
+    document.getElementById("gps_coords").innerHtml = "no geolocation data";
 
   // get heading...
-  navigator.compass.getCurrentHeading(headingSuccess, headingError);
+  if (navigator && navigator.compass && navigator.compass.getCurrentHeading)
+    navigator.compass.getCurrentHeading(headingSuccess, headingError);
+    document.getElementById("heading").innerHtml = "no heading info";
 
   // get device acceleration
-  navigator.accelerometer.getCurrentAcceleration(accelerometerSuccess, accelerometerError);
+  if (navigator && navigator.accelerometer && navigator.accelerometer.getCurrentAcceleration)
+    navigator.accelerometer.getCurrentAcceleration(accelerometerSuccess, accelerometerError);
+    document.getElementById("acceleration").innerHtml = "no accelerometer";
 
   // get device information
-  document.getElementById("device").innerHTML = device.model + ", " + device.platform + " " + device.version;
+  if (device)
+    document.getElementById("device").innerHTML = device.model + ", " + device.platform + " " + device.version;
+    document.getElementById("device").innerHtml = "no device info";
 
   setTimeout(updateSensors,1000);
 }
