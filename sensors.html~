@@ -4,14 +4,14 @@
 <script>
 
 function geoLocationSuccess(position) {
-    document.getElementById("gps_coords").innerHTML = "Lat " + position.coords.latitude + ", Long " + position.coords.longitude;
+    document.getElementById("gps_coords").innerHTML = "<br>Lat " + position.coords.latitude + "<br> Long " + position.coords.longitude;
 }
 function geoLocationError(error) {
     document.getElementById("gps_coords").innerHTML = "GPS error " + error.code + " " + error.message;
 }
 
 function headingSuccess(heading) {
-    document.getElementById("heading").innerHTML = heading.magneticHeading;
+    document.getElementById("heading").innerHTML = heading.magneticHeading + " degrees";
 
 }
 function headingError(error) {
@@ -19,7 +19,7 @@ function headingError(error) {
 }
 
 function accelerometerSuccess(accel) {
-    document.getElementById("acceleration").innerHTML = "X = " + accel.x + "m/s^2, Y = " + accel.y + ", Z = " + accel.z;
+    document.getElementById("acceleration").innerHTML = "<br>X = " + accel.x + "m/s^2<br> Y = " + accel.y + "<br> Z = " + accel.z;
 
 }
 function accelerometerError(error) {
