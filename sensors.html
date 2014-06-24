@@ -90,8 +90,25 @@ function imageCapture() {
   navigator.device.capture.captureImage(imageCaptureSuccess, imageCaptureError, {limit:5});
 }
 
+function onVolumeDownKeyDown() {
+  document.getElementById("buttons").innerHTML = "volume down pressed";
+}
+function onVolumeDownKeyUp() {
+  document.getElementById("buttons").innerHTML = "volume up pressed";
+}
+function onMenuKeyDown() {
+  document.getElementById("buttons").innerHTML = "menu pressed";
+}
+function onSearchKeyDown() {
+  document.getElementById("buttons").innerHTML = "search pressed";
+}
+
 function onDeviceReady() {
   document.addEventListener("batterystatus", onBatteryStatus, false);
+  document.addEventListener("volumedownbutton", onVolumeDownKeyDown, false);
+  document.addEventListener("volumeupbutton", onVolumeDownKeyUp, false);
+  document.addEventListener("menubutton", onMenuKeyDown, false);
+  document.addEventListener("searchbutton", onSearchKeyDown, false);
   updateSensors();
   cycleImages();
 }
@@ -105,11 +122,11 @@ function onDeviceReady() {
 <p><b>Heading: </b> <span id="heading"></span></p>
 <p><b>Acceleration: </b> <span id="acceleration"></span></p>
 <p><b>Device: </b> <span id="device"></span></p>
+<p><b>Buttons: </b> <span id="volume"></span></p>
 <p><b>Battery: </b> <span id="battery"></span></p>
 <p><button onclick="navigator.notification.vibrate(100)">Vibrate</button></p>
 <p><button onclick="imageCapture();">Take picture </button></p>
 <p><b>Image: </b> <img id="image" src=""></p>
-<p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
 <p><b>: </b> <span id=""></span></p>
